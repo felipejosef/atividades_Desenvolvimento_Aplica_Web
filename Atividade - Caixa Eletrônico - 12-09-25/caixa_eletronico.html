@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>caixa eletrônico</title>
+</head>
+<body>
+    <script>
+        let saldo = 0;
+        let sair = false;
+        while (!sair) {
+            let opcao = prompt("Escolha uma opção:\n1. Depositar\n2. Sacar\n3. Consultar Saldo\n4. Sair");
+            switch (opcao) {
+                case '1':
+                    let deposito = parseFloat(prompt("Digite o valor a depositar:"));
+                    if (!isNaN(deposito) && deposito > 0) {
+                        saldo += deposito;
+                        alert(`Depósito de R$${deposito.toFixed(2)} realizado com sucesso!`);
+                    } else {
+                        alert("Valor inválido para depósito.");
+                    }
+                    break;
+                case '2':
+                    let saque = parseFloat(prompt("Digite o valor a sacar:"));
+                    if (!isNaN(saque) && saque > 0) {
+                        if (saque <= saldo) {
+                            saldo -= saque;
+                            alert(`Saque de R$${saque.toFixed(2)} realizado com sucesso!`);
+                        } else {
+                            alert("Saldo insuficiente para saque.");
+                        }
+                    } else {
+                        alert("Valor inválido para saque.");
+                    }
+                    break;
+                case '3':
+                    alert(`Seu saldo atual é R$${saldo.toFixed(2)}`);
+                    break;
+                case '4':
+                    sair = true;
+                    alert("Obrigado por usar o caixa eletrônico!");
+                    break;
+                default:
+                    alert("Opção inválida. Tente novamente.");
+            }
+        }
+    </script>
+    
+</body>
+</html>
